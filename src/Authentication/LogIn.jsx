@@ -1,5 +1,5 @@
 import React from "react";
-import auth from "../firebase.config";
+import auth from "../firebase/firebase.config";
 import { useContext, useRef, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
@@ -83,7 +83,7 @@ const LogIn = () => {
   
   return (
     <div className="card bg-base-100 w-full mx-auto mt-10 md:mt-20 max-w-sm shrink-0 shadow-2xl">
-      <form className="card-body">
+      <form onSubmit={handleLogin} className="card-body">
         <h1 className="text-5xl font-bold text-center mb-10">Login now!</h1>
         <div className="form-control">
           <label className="label">
