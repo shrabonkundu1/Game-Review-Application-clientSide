@@ -7,6 +7,7 @@ import { CgProfile } from "react-icons/cg";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-toastify";
 
+
 const Header = () => {
   const { user, logOutUser } = useContext(AuthContext);
 
@@ -64,7 +65,7 @@ const Header = () => {
   );
   return (
     <div>
-      <div className="md:navbar py-5 bg-base-100 mb-10  flex justify-between items-center">
+      <div className="md:navbar my-2 bg-base-100   flex justify-between items-center">
         <div className="dropdown mr-10">
           <div tabIndex={0} role="button" className="btn btn-ghost  lg:hidden">
             <svg
