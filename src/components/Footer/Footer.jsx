@@ -45,7 +45,7 @@ const Footer = () => {
       <div className="bg-gradient-to-r from-[#060c3b] to-[#010314]"><div className="border-t border-slate-400 my-4    "></div></div>
       <footer className="footer footer-center bg-gradient-to-r from-[#060c3b] to-[#010314] text-base-content p-4">
   <aside>
-    <p className="w-[70%] md:w-full text-white text-center">Copyright © {new Date().getFullYear()} - All right reserved by CouponNest.</p>
+    <p className="w-[70%] md:w-full text-white text-center">Copyright © {new Date().getFullYear()} - All right reserved by Asthetic Team.</p>
   </aside>
 </footer>
     </div>
