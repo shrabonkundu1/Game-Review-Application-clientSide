@@ -1,6 +1,44 @@
 import React from "react";
+import Swal from 'sweetalert2'
 
 const AddReview = () => {
+
+    const handleAddReview = e => {
+        e.preventDefault();
+        const form = e.target;
+
+        const photo = form.photo.value;
+        const title = form.title.value;
+        const description = form.description.value;
+        const rating = form.rating.value;
+        const year = form.year.value;
+        const genres = form.genres.value;
+        const userName = form.userName.value;
+        const email = form.email.value;
+
+        const newReview = {photo, title, description, rating, year, genres, userName, email}
+        console.log(newReview)
+
+        fetch('http://localhost:5000/reviews',{
+            method: "POST",
+            headers: {
+                "content-type":"application/json"
+            },
+            body: JSON.stringify(newReview)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Review Added Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                  })
+            }
+        })
+    }
   return (
     <div className="mt-20">
       <h1 className="text-2xl font-bold text-black text-center mb-4">
@@ -12,8 +50,8 @@ const AddReview = () => {
         using Lorem Ipsum is that it has a more-or-less normal distribution of
         letters, as opposed to using Content here.
       </p>
-      <div className="grid grid-cols-6 gap-5 w-[90%] mx-auto">
-      <form className="grid grid-cols-2 gap-4 col-span-4">
+      <div className="grid grid-cols-5 gap-5 w-[90%] mx-auto border p-10 rounded-xl bg-gradient-to-r from-[#060c3b] to-[#010314]">
+      <form onSubmit={handleAddReview} className="grid grid-cols-2 gap-4 col-span-3 w-[85%]">
         <input
           type="text"
           name="photo"
@@ -67,7 +105,7 @@ const AddReview = () => {
         <input
           type="submit"
           value="Add Review"
-          className="col-span-2 bg-orange-400 text-black p-2 rounded hover:bg-yellow-600"
+          className="col-span-2 bg-[#ca2848] text-black p-2 rounded hover:bg-yellow-600"
         />
       </form>
       <div className="col-span-2 border"></div>
