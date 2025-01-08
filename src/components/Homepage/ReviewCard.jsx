@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ReactStars from "react-stars";
 
 const ReviewCard = ({review}) => {
 
     console.log(review)
-    const {photo,title, rating, year} =review;
+    const {_id,photo,title, rating, year} =review;
 
 
     const ratingChanged = (newRating) => {
@@ -38,7 +39,8 @@ const ReviewCard = ({review}) => {
             <button className="text-xl font-semibold text-blue-300">{year}</button>
          </div>
           <div className="card-actions py-3 ">
-            <button className="btn btn-primary bg-gradient-to-r from-[#060c3b] to-[#010314] font-semibold text-[18px] hover:bg-gradient-to-r hover:from-[#4a0ee3] hover:to-[#0a0e32] text-blue-300 hover:text-slate-300">Explore Details</button>
+           <Link to={`/details/${_id}`}>
+           <button className="btn btn-primary bg-gradient-to-r from-[#060c3b] to-[#010314] font-semibold text-[18px] hover:bg-gradient-to-r hover:from-[#4a0ee3] hover:to-[#0a0e32] text-blue-300 hover:text-slate-300">Explore Details</button></Link>
           </div> 
         </div>
       </div>

@@ -52,16 +52,11 @@ const AddReview = () => {
       });
   };
   return (
-    <div className="mt-20">
-      <h1 className="text-2xl font-bold text-black text-center mb-4">
+    <div className="mt-20 mb-32">
+      <h1 className="text-2xl font-bold text-black text-center mb-4 ">
         Add New Review
       </h1>
-      <p className="text-center mx-16 text-gray-600 mb-6">
-        It is a long established fact that a reader will be distraceted by the
-        readable content of a page when looking at its layout. The point of
-        using Lorem Ipsum is that it has a more-or-less normal distribution of
-        letters, as opposed to using Content here.
-      </p>
+     
       <div className="grid grid-cols-5 gap-5 w-[90%] mx-auto border p-10 rounded-xl bg-gradient-to-r from-[#060c3b] to-[#010314]">
         <form
           onSubmit={handleAddReview}
