@@ -44,7 +44,7 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/myreview">
+            <NavLink to="/myReviews">
               <CgProfile />
               My Review
             </NavLink>
