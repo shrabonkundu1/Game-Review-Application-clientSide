@@ -120,10 +120,10 @@ const Header = () => {
             </div>
           ) : (
             <div className="flex gap-2 mr-10">
-              <NavLink to="/logIn" className="btn">
+              <NavLink to="/login" className="btn">
                 Login
               </NavLink>
-              <NavLink to="/signUp" className="btn">
+              <NavLink to="/signup" className="btn">
                 Sign Up
               </NavLink>
             </div>
