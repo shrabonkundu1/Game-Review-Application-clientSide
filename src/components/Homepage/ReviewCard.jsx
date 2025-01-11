@@ -14,7 +14,7 @@ const ReviewCard = ({review}) => {
     
   return (
     <div className="">
-      <div className="card  rounded-lg bg-black shadow-xl w-max">
+      <div className="card  rounded-lg bg-[#1d232a] shadow-xl w-max">
         <figure className="px-5 pt-5 w-[330px] h-[260px] object-cover">
           <img
             src={photo}

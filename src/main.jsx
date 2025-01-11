@@ -16,6 +16,7 @@ import { ToastContainer } from "react-toastify";
 import AddReview from "./components/Homepage/AddReview.jsx";
 import PrivateRoute from "./roiutes/PrivateRoute.jsx";
 import Details from "./components/Homepage/Details.jsx";
+import UpdateReview from "./components/Homepage/UpdateReview.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/reviews')
+        loader: () => fetch('https://game-review-theta.vercel.app/reviews')
       },
       
       {
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
       {
         path: "/allreview",
         element: <AllReview></AllReview>,
-        loader: () => fetch('http://localhost:5000/reviews')
+        loader: () => fetch('https://game-review-theta.vercel.app/reviews')
       },
       {
         path: "/addreview",
@@ -48,16 +49,21 @@ const router = createBrowserRouter([
       {
         path: "/myReviews",
         element: <PrivateRoute><MyReview></MyReview></PrivateRoute>,
-        // loader: (params)=> fetch(`http://localhost:5000/reviews/${params.email}`)
+        // loader: ()=> fetch("http://localhost:5000/myReviews")
       },
       {
         path: "/gamewatchlist",
         element: <PrivateRoute><MyWatchList></MyWatchList></PrivateRoute>,
       },
       {
-        path: "/details/:id",
-        element: <PrivateRoute><Details></Details></PrivateRoute>,
+        path: "/updateReviews/:id",
+        element: <PrivateRoute><UpdateReview></UpdateReview></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/reviews/${params.id}`)
+      },
+      {
+        path: "/details/:id",
+        element: <Details></Details>,
+        loader: ({params}) => fetch(`https://game-review-theta.vercel.app/reviews/${params.id}`)
       }
     ],
   },

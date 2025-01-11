@@ -1,6 +1,33 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const MyWatchList = () => {
+
+    const {user}= useContext(AuthContext);
+
+    const email = user.email;
+    const [WatchList,setWatchList] = useState([]);
+
+    console.log(WatchList)
+     useEffect(() => {
+        if (user?.email) {
+          fetch(`http://localhost:5000/gamewatchlist?email=${user.email}`)
+            .then((res) => res.json())
+            .then((data) => {
+              setWatchList(data);
+            });
+        }
+      }, []);
+
+ 
+
+
+
+
+
+
+
+
     return (
         <div className="mb-24 mt-16 text-center">
       <p className="text-5xl text-blue-900 font-semibold ">My Game WatchList</p>

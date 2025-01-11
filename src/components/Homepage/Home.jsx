@@ -12,7 +12,7 @@ const Home = () => {
            
             <div className='mt-24'>
                 <h1 className='text-6xl font-semibold mb-16 text-center'>Highest Rated Game</h1>
-            <div className='grid grid-cols-4 gap-8 w-[90%] mx-auto '>
+            <div className='grid grid-cols-4 gap-8 w-[90%] mx-auto mb-24'>
                 {
                     reviews.map(review=> <ReviewCard key={review._id} review={review}></ReviewCard>)
                 }
