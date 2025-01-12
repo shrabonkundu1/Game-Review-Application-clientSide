@@ -54,7 +54,7 @@ const AddReview = () => {
   };
   return (
     <div className="mt-20 mb-32">
-      <h1 className="text-2xl font-bold text-black text-center mb-4 ">
+      <h1 className="text-4xl text-blue-900 font-bold text-center mb-6 ">
         Add New Review
       </h1>
      
@@ -145,7 +145,7 @@ const AddReview = () => {
           <input
             type="submit"
             value="Add Review"
-            className="col-span-2 bg-[#ca2848] text-black p-2 rounded hover:bg-yellow-600 cursor-pointer"
+            className="col-span-2 bg-gradient-to-r from-[#6376ff] to-[#061170]  text-slate-200 text-[18px] font-semibold p-2 rounded hover:bg-yellow-600 cursor-pointer"
           />
         </form>
         <div className="col-span-2 border"></div>

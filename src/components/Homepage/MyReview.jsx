@@ -97,7 +97,7 @@ const MyReview = () => {
 
   return (
     <div className="mb-24 mt-16 text-center">
-      <p className="text-5xl text-blue-900 font-semibold mb-10">My review</p>
+      <p className="text-4xl text-blue-900 font-bold mb-10">My review</p>
 
       <div className="overflow-x-auto  w-[95%] mx-auto min-h-screen">
         {review.length > 0 ? (

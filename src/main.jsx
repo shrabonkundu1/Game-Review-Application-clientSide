@@ -17,6 +17,7 @@ import AddReview from "./components/Homepage/AddReview.jsx";
 import PrivateRoute from "./roiutes/PrivateRoute.jsx";
 import Details from "./components/Homepage/Details.jsx";
 import UpdateReview from "./components/Homepage/UpdateReview.jsx";
+import ErrorPage from "./components/Error/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
         path: "/details/:id",
         element: <Details></Details>,
         loader: ({params}) => fetch(`https://game-review-theta.vercel.app/reviews/${params.id}`)
+      },
+      {
+        path: "*",
+        element: <ErrorPage></ErrorPage>,
       }
     ],
   },

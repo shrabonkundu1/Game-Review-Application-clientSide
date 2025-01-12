@@ -79,7 +79,7 @@ const Details = () => {
 
   return (
     <div className=" bg-black shadow-2xl w-[100%] mx-auto  text-blue-300 pb-48">
-      <h1 className="text-5xl text-center font-semibold pt-20 pb-10">
+      <h1 className="text-daxl text-center font-bold pt-20 pb-10">
         {title}
       </h1>
       <div className="w-[80%] mx-auto shadow-2xl rounded-lg shadow-sky-700  pb-10">
