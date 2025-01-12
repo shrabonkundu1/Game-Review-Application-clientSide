@@ -2,6 +2,8 @@ import React from 'react';
 import Banner from './Banner';
 import { useLoaderData } from 'react-router-dom';
 import ReviewCard from './ReviewCard';
+import TopGamers from './TopGamers';
+import MPGame from './MPGame';
 
 const Home = () => {
 
@@ -17,7 +19,10 @@ const Home = () => {
                     reviews.map(review=> <ReviewCard key={review._id} review={review}></ReviewCard>)
                 }
             </div>
+            
             </div>
+            <TopGamers></TopGamers>
+            <MPGame></MPGame>
         </div>
     );
 };

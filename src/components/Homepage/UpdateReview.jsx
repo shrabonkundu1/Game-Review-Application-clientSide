@@ -6,8 +6,9 @@ import Swal from "sweetalert2";
 const UpdateReview = () => {
 
     const review = useLoaderData()
+    console.log(review)
 
-    const {title,photo,genre,year,rating,description} =review
+    const {_id,title,photo,genre,year,rating,description} =review
 
     const handleUpdateReview = (event) => {
         event.preventDefault();
@@ -34,7 +35,7 @@ const UpdateReview = () => {
         };
         // console.log(newReview);
     
-        fetch("http://localhost:5000/reviews", {
+        fetch(`http://localhost:5000/reviews/${_id}`, {
           method: "PUT",
           headers: {
             "content-type": "application/json",
@@ -44,10 +45,10 @@ const UpdateReview = () => {
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
-            if (data.insertedId) {
+            if (data.modifiedCount) {
               Swal.fire({
                 title: "Success!",
-                text: "Review Added Successfully",
+                text: "Review Update Successfully",
                 icon: "success",
                 confirmButtonText: "Ok",
               });
