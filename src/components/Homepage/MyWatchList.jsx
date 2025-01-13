@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { AiOutlineDelete } from "react-icons/ai";
+import Swal from "sweetalert2";
 
 const MyWatchList = () => {
   const { user } = useContext(AuthContext);
@@ -14,19 +15,50 @@ const MyWatchList = () => {
       fetch(`https://game-review-theta.vercel.app/watchlist/${email}`)
         .then((res) => res.json())
         .then((data) => {
-          if(Array.isArray(data)){
+          if (Array.isArray(data)) {
             setWatchList(data);
-          }else{
-            console.error("The data is not an array")
+          } else {
+            console.error("The data is not an array");
           }
-         
-          
         })
         .finally(() => {
-          setLoading(false)
-        })
+          setLoading(false);
+        });
     }
   }, [email]);
+  const handleDelete = (_id) => {
+    console.log(_id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log(result);
+        fetch(`https://game-review-theta.vercel.app/myReviews/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+              const remaining = WatchList.filter((data) => data._id !== _id);
+              setWatchList(remaining);
+            }
+          });
+      }
+    });
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center ">
@@ -81,12 +113,11 @@ const MyWatchList = () => {
                     <td className="py-2 px-4 text-[18px]">{data.rating}</td>
                     <td className="py-2 px-4 text-[18px]">{data.year}</td>
                     <td className="py-2 px-4 text-[18px]">{data.genre}</td>
-                    
+
                     <td className="px-2 py-2 md:space-x-2 space-y-2 ">
-                     
                       <button
                         className="px-4 py-2    bg-gradient-to-r from-[#ed6496] to-[#d30e0e] text-white rounded-md shadow-[#A91D3A] hover:bg-[#9c1631]"
-                        // onClick={() =>handleDelete(data._id)}
+                        onClick={() =>handleDelete(data._id)}
                       >
                         <AiOutlineDelete size={20} />
                       </button>
