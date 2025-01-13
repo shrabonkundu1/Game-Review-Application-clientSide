@@ -23,7 +23,8 @@ const LogIn = () => {
     const password = e.target.password.value;
 
     setSuccess(false);
-    setLoginError("");
+    // setLoginError("we");
+    
 
     signInUser(email,password)
       .then(result => {
@@ -37,8 +38,12 @@ const LogIn = () => {
         navigate("/")
       })
       .catch(error => {
-        
-        setLoginError(error.message)
+       
+        // setLoginError(error.message)
+        toast.error("Email and password should not match",{
+          position: "top-center",
+          autoClose:2000
+        })
       })
   };
 

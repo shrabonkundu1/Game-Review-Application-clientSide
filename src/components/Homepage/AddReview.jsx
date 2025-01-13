@@ -2,6 +2,9 @@ import React, { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
 // import { Navigate } from "react-router-dom";
+import lottie from "../../lottie/Animation - 1736774862850.json";
+import Lottie from "lottie-react";
+import { Cursor, Typewriter } from "react-simple-typewriter";
 
 const AddReview = () => {
   const { user } = useContext(AuthContext);
@@ -53,64 +56,68 @@ const AddReview = () => {
       });
   };
   return (
-    <div className="mt-20 mb-32">
-      <h1 className="text-4xl text-blue-900 font-bold text-center mb-6 ">
-        Add New Review
-      </h1>
-     
-      <div className="grid grid-cols-5 gap-5 w-[90%] mx-auto border p-10 rounded-xl bg-gradient-to-r from-[#060c3b] to-[#010314]">
-        <form
-          onSubmit={handleAddReview}
-          className="grid grid-cols-2 gap-4 col-span-3 w-[85%]"
-        >
-          <input
-            type="text"
-            required
-            name="photo"
-            placeholder="Game Cover URL"
-            className="col-span-1 border  text-black bg-white border-gray-300 p-2 rounded"
-          />
+    <div className="pt-20 pb-32 bg-gradient-to-r from-[#060c3b] to-[#010314]">
+      <div className="border w-[85%] mx-auto rounded-lg">
+        <h1 className="text-4xl text-blue-300 font-bold text-center underline mt-10">
+          Add New
+          <span>
+            <Typewriter
+              words={[" Review"]}
+              loop={8}
+              typeSpeed={100}
+              deleteSpeed={80}
+            ></Typewriter>
+          </span>
+          <span className="text-blue-900">
+            <Cursor cursorStyle="_"></Cursor>
+          </span>
+        </h1>
 
-          <input
-            type="text"
-            name="title"
-            required
-            placeholder="Enter Game Title"
-            className="border bg-white  text-black border-gray-300 p-2 rounded"
-          />
-          <textarea
-            type="text"
-            name="description"
-            required
-            placeholder="Enter Review Description"
-            className="border bg-white  text-black border-gray-300 col-span-2 p-2 rounded"
-          ></textarea>
-          <input
-            type="number"
-            name="rating"
-            required
-            placeholder="Rating"
-            className="border bg-white  text-black border-gray-300 p-2 rounded"
-          />
-          <input
-            type="text"
-            name="year"
-            required
-            placeholder="Publishing Year"
-            className="border bg-white  text-black border-gray-300 p-2 rounded"
-          />
-          {/* <input
-          type="text"
-          name="genres"
-          placeholder="Genres"
-          className="border col-span-2 bg-white  text-black border-gray-300 p-2 rounded"
-        /> */}
+        <div className="grid grid-cols-5 gap-5 w-[100%] mx-auto  p-24 rounded-xl bg-gradient-to-r from-[#060c3b] to-[#010314]">
+          <form
+            onSubmit={handleAddReview}
+            className="grid grid-cols-2 gap-4 col-span-3 w-[85%]"
+          >
+            <input
+              type="text"
+              required
+              name="photo"
+              placeholder="Game Cover URL"
+              className="col-span-1 border  text-black bg-white border-gray-300 p-2 rounded"
+            />
 
-          
+            <input
+              type="text"
+              name="title"
+              required
+              placeholder="Enter Game Title"
+              className="border bg-white  text-black border-gray-300 p-2 rounded"
+            />
+            <textarea
+              type="text"
+              name="description"
+              required
+              placeholder="Enter Review Description"
+              className="border bg-white  text-black border-gray-300 col-span-2 p-2 rounded"
+            ></textarea>
+            <input
+              type="number"
+              name="rating"
+              required
+              placeholder="Rating"
+              className="border bg-white  text-black border-gray-300 p-2 rounded"
+            />
+            <input
+              type="text"
+              name="year"
+              required
+              placeholder="Publishing Year"
+              className="border bg-white  text-black border-gray-300 p-2 rounded"
+            />
+
             <select
               // id="genres"
               name="genre"
-              
               className="border col-span-2 bg-white  text-black border-gray-300 p-2 rounded"
               required
             >
@@ -121,34 +128,36 @@ const AddReview = () => {
               <option value="Simulation">Simulation</option>
               <option value="Sports">Sports</option>
             </select>
-          
 
-          <input
-            type="text"
-            name="userName"
-            placeholder="User Name"
-            value={user?.displayName || ''}
-            readOnly
-            //   defaultValue={name}
-            className="border bg-white  text-black border-gray-300 p-2 rounded"
-          />
-          <input
-            type="email"
-            name="email"
-            value={user?.email || ''}
-            readOnly
-            //   defaultValue={email}
-            placeholder="User Email"
-            className="border bg-white text-black border-gray-300 p-2 rounded"
-          />
+            <input
+              type="text"
+              name="userName"
+              placeholder="User Name"
+              value={user?.displayName || ""}
+              readOnly
+              //   defaultValue={name}
+              className="border bg-white  text-black border-gray-300 p-2 rounded"
+            />
+            <input
+              type="email"
+              name="email"
+              value={user?.email || ""}
+              readOnly
+              //   defaultValue={email}
+              placeholder="User Email"
+              className="border bg-white text-black border-gray-300 p-2 rounded"
+            />
 
-          <input
-            type="submit"
-            value="Add Review"
-            className="col-span-2 bg-gradient-to-r from-[#6376ff] to-[#061170]  text-slate-200 text-[18px] font-semibold p-2 rounded hover:bg-yellow-600 cursor-pointer"
-          />
-        </form>
-        <div className="col-span-2 border"></div>
+            <input
+              type="submit"
+              value="Add Review"
+              className="col-span-2 bg-gradient-to-r from-[#6376ff] to-[#061170]  text-slate-200 text-[18px] font-semibold p-2 rounded hover:bg-yellow-600 cursor-pointer"
+            />
+          </form>
+          <div className="col-span-2 ">
+            <Lottie animationData={lottie}></Lottie>
+          </div>
+        </div>
       </div>
     </div>
   );

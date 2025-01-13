@@ -6,7 +6,7 @@ import { TbBrandFlutter } from "react-icons/tb";
 import { CgProfile } from "react-icons/cg";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-toastify";
-
+import { Cursor, Typewriter } from "react-simple-typewriter";
 
 const Header = () => {
   const { user, logOutUser } = useContext(AuthContext);
@@ -38,21 +38,20 @@ const Header = () => {
         </NavLink>
       </li>
       <li>
-            <NavLink to="/addreview">
-              <TbBrandFlutter />
-              Add Review
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/myReviews">
-              <CgProfile />
-              My Review
-            </NavLink>
-          </li>
+        <NavLink to="/addreview">
+          <TbBrandFlutter />
+          Add Review
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/myReviews">
+          <CgProfile />
+          My Review
+        </NavLink>
+      </li>
 
       {user && (
         <>
-          
           <li>
             <NavLink to="/watchList">
               <CgProfile />
@@ -93,7 +92,19 @@ const Header = () => {
         <div className="navbar-start mr-5">
           <a className="btn btn-ghost text-xl">
             <img className="w-10 h-10 rounded-lg mr-1" src={logo} alt="" />
-            <p>Asthetic Gamer</p>
+            <p className="font-semibold">Asthetic
+              <span>
+                <Typewriter
+                  words={[" Gamer"]}
+                  loop={8}
+                  typeSpeed={100}
+                  deleteSpeed={80}
+                ></Typewriter>
+              </span>
+              <span className="text-blue-900">
+                <Cursor cursorStyle="_"></Cursor>
+              </span>
+            </p>
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -101,22 +112,19 @@ const Header = () => {
         </div>
         <div className=" navbar-end">
           {user ? (
-            
             <div className="  flex items-center gap-5 md:mr-8">
-            
               <img
                 className="w-10 h-10 rounded-full object-cover"
                 src={user.photoURL}
                 alt="Profile picture"
               />
-            
+
               <button
                 onClick={handleSignOut}
                 className="btn btn-outline btn-ghost"
               >
                 Log Out
               </button>
-            
             </div>
           ) : (
             <div className="flex gap-2 mr-10">

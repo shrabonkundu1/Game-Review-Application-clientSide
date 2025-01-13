@@ -4,15 +4,18 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { AiOutlineDelete } from "react-icons/ai";
 import { FaRegEdit } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Cursor, Typewriter } from "react-simple-typewriter";
 
 const MyReview = () => {
   const { user } = useContext(AuthContext);
   const [review, setReview] = useState([]);
-  const [loading,setLoading] = useState();
+  const [loading, setLoading] = useState();
   useEffect(() => {
     if (user?.email) {
-      setLoading(true)
-      fetch(`https://game-review-theta.vercel.app/myReviews?email=${user.email}`)
+      setLoading(true);
+      fetch(
+        `https://game-review-theta.vercel.app/myReviews?email=${user.email}`
+      )
         .then((res) => res.json())
         .then((data) => {
           setReview(data);
@@ -21,8 +24,6 @@ const MyReview = () => {
     }
   }, []);
 
-
-  
   const handleUpdate = (event) => {
     const form = event.target;
     const title = form.title.value;
@@ -32,38 +33,29 @@ const MyReview = () => {
     const year = form.year.value;
     const description = form.description.value;
 
+    const updateReview = { title, photo, rating, genre, year, description };
+    console.log(updateReview);
 
-
-    const updateReview = {title, photo, rating, genre, year, description}
-  console.log(updateReview)
-
-
-  
-  fetch(`https://game-review-theta.vercel.app/reviews/${_id}`,{
-    method: "PUT",
-    headers: {
-      "content-type":"application/json"
-    },
-    body: JSON.stringify(updateReview)
-  })
-  .then(res => res.json())
-  .then(data => {
-    console.log(data)
-    if(data.modifiedCount > 0){
-      Swal.fire({
-          title: 'success!',
-          text: 'Coffee Updated Successfully',
-          icon: 'success',
-          confirmButtonText: 'ok'
-        })
-  }
-  })
-  }
-
-  
-
-
-
+    fetch(`https://game-review-theta.vercel.app/reviews/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateReview),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: "success!",
+            text: "Coffee Updated Successfully",
+            icon: "success",
+            confirmButtonText: "ok",
+          });
+        }
+      });
+  };
 
   const handleDelete = (_id) => {
     console.log(_id);
@@ -77,7 +69,7 @@ const MyReview = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(result)
+        console.log(result);
         fetch(`https://game-review-theta.vercel.app/myReviews/${_id}`, {
           method: "DELETE",
         })
@@ -98,17 +90,30 @@ const MyReview = () => {
     });
   };
 
-  if(loading){
-    return <div className="min-h-screen flex items-center justify-center ">
-    
-     <span className="loading loading-bars loading-md mx-auto"></span>;
-  
-  </div>
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center ">
+        <span className="loading loading-bars loading-md mx-auto"></span>;
+      </div>
+    );
   }
 
   return (
     <div className="mb-24 mt-16 text-center">
-      <p className="text-4xl text-blue-900 font-bold mb-10">My review</p>
+      <p className="text-4xl text-blue-900 font-bold mb-10">
+        Mya
+        <span>
+          <Typewriter
+            words={[" Review"]}
+            loop={8}
+            typeSpeed={100}
+            deleteSpeed={80}
+          ></Typewriter>
+        </span>
+        <span className="text-blue-900">
+          <Cursor cursorStyle="_"></Cursor>
+        </span>
+      </p>
 
       <div className="overflow-x-auto  w-[95%] mx-auto min-h-screen">
         {review.length > 0 ? (
@@ -165,16 +170,16 @@ const MyReview = () => {
                     </td> */}
                     <td className="px-2 py-2 md:space-x-2 space-y-2 ">
                       <Link to={`/updateReviews/${rev._id}`}>
-                      <button
-                        className="px-4 py-2 bg-gradient-to-r from-[#618bff] to-[#071ff2] text-white rounded-md shadow-md hover:bg-red-700"
-                        onClick={()=>handleUpdate(rev._id)}
-                      >
-                        <FaRegEdit size={20} />
-                      </button>
+                        <button
+                          className="px-4 py-2 bg-gradient-to-r from-[#618bff] to-[#071ff2] text-white rounded-md shadow-md hover:bg-red-700"
+                          onClick={() => handleUpdate(rev._id)}
+                        >
+                          <FaRegEdit size={20} />
+                        </button>
                       </Link>
                       <button
                         className="px-4 py-2    bg-gradient-to-r from-[#ed6496] to-[#d30e0e] text-white rounded-md shadow-[#A91D3A] hover:bg-[#9c1631]"
-                        onClick={() =>handleDelete(rev._id)}
+                        onClick={() => handleDelete(rev._id)}
                       >
                         <AiOutlineDelete size={20} />
                       </button>

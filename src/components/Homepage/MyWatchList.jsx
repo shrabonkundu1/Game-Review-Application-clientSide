@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { AiOutlineDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
+import { Cursor, Typewriter } from "react-simple-typewriter";
 
 const MyWatchList = () => {
   const { user } = useContext(AuthContext);
@@ -39,7 +40,7 @@ const MyWatchList = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log(result);
-        fetch(`https://game-review-theta.vercel.app/myReviews/${_id}`, {
+        fetch(`https://game-review-theta.vercel.app/watchlist/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -69,7 +70,20 @@ const MyWatchList = () => {
 
   return (
     <div className="mb-24 mt-16 text-center">
-      <p className="text-4xl text-blue-900 font-bold mb-10">My review</p>
+      <p className="text-4xl text-blue-900 font-bold mb-10">
+        My
+        <span>
+          <Typewriter
+            words={[" WatchList Games"]}
+            loop={8}
+            typeSpeed={100}
+            deleteSpeed={80}
+          ></Typewriter>
+        </span>
+        <span className="text-blue-900">
+          <Cursor cursorStyle="_"></Cursor>
+        </span>
+      </p>
 
       <div className="overflow-x-auto  w-[95%] mx-auto min-h-screen">
         {WatchList.length > 0 ? (
@@ -117,7 +131,7 @@ const MyWatchList = () => {
                     <td className="px-2 py-2 md:space-x-2 space-y-2 ">
                       <button
                         className="px-4 py-2    bg-gradient-to-r from-[#ed6496] to-[#d30e0e] text-white rounded-md shadow-[#A91D3A] hover:bg-[#9c1631]"
-                        onClick={() =>handleDelete(data._id)}
+                        onClick={() => handleDelete(data._id)}
                       >
                         <AiOutlineDelete size={20} />
                       </button>
