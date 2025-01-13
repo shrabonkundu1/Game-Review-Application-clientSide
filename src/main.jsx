@@ -23,11 +23,12 @@ const router = createBrowserRouter([
   {
     path: "",
     element: <MainLayout></MainLayout>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch('https://game-review-theta.vercel.app/reviews')
+        // loader: () => fetch('https://game-review-theta.vercel.app/reviews')
       },
       
       {
@@ -50,26 +51,23 @@ const router = createBrowserRouter([
       {
         path: "/myReviews",
         element: <PrivateRoute><MyReview></MyReview></PrivateRoute>,
-        // loader: ()=> fetch("http://localhost:5000/myReviews")
+        // loader: ()=> fetch("https://game-review-theta.vercel.app/myReviews")
       },
       {
-        path: "/gamewatchlist",
+        path: "/watchlist",
         element: <PrivateRoute><MyWatchList></MyWatchList></PrivateRoute>,
       },
       {
         path: "/updateReviews/:id",
         element: <PrivateRoute><UpdateReview></UpdateReview></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/reviews/${params.id}`)
+        loader: ({params}) => fetch(`https://game-review-theta.vercel.app/reviews/${params.id}`)
       },
       {
         path: "/details/:id",
         element: <Details></Details>,
-        loader: ({params}) => fetch(`https://game-review-theta.vercel.app/reviews/${params.id}`)
+        // loader: ({params}) => fetch(`https://game-review-theta.vercel.app/reviews/${params.id}`)
       },
-      {
-        path: "*",
-        element: <ErrorPage></ErrorPage>,
-      }
+      
     ],
   },
 ]);

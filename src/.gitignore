@@ -1,1 +1,17 @@
 node_modules
+
+
+
+# app.get('/details/:id', async (req, res) => {
+#       const { id } = req.params;
+#       try {
+#         const result = await reviewCollection.findOne({ _id: new ObjectId(id) });
+#         if (!result) {
+#           return res.status(404).json({ message: 'Review not found' });
+#         }
+#          res.json(result);
+#       } catch (err) {
+#         console.error('Error deleting review:', err);
+#         res.status(500).json({ message: 'Failed to delete review', error: err.message });
+#       }
+#     });

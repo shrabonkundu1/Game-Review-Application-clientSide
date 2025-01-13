@@ -35,7 +35,7 @@ const UpdateReview = () => {
         };
         // console.log(newReview);
     
-        fetch(`http://localhost:5000/reviews/${_id}`, {
+        fetch(`https://game-review-theta.vercel.app/reviews/${_id}`, {
           method: "PUT",
           headers: {
             "content-type": "application/json",

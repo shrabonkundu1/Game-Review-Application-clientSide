@@ -1,14 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import ReactStars from "react-stars";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const Details = () => {
-  const reviews = useLoaderData() || {};
+  // const reviews = useLoaderData() || {};
 
   const { user } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+  const [reviews, setReviews] = useState(null);
+  const params = useParams();
+  const id = params.id;
+  useEffect(() => {
+    fetch(`https://game-review-theta.vercel.app/details/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setReviews(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [id]);
+  
 
   const handleAddToWatchList = () => {
     if (!user) {
@@ -25,11 +40,12 @@ const Details = () => {
     const watchList = {
       ...reviews,
       email: user.email,
-      username: user.userName,
+      username: user.displayName,
     };
     console.log(watchList);
+    setLoading(true);
 
-    fetch(`http://localhost:5000/gamewatchlist`, {
+    fetch(`https://game-review-theta.vercel.app/watchlist`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -45,6 +61,7 @@ const Details = () => {
             text: "Added to your WatchList!",
             icon: "success",
           });
+          setLoading(false);
         } else {
           Swal.fire({
             title: "Error",
@@ -55,6 +72,7 @@ const Details = () => {
       })
       .catch((error) => {
         console.log("error:", error);
+        setLoading(false);
         Swal.fire({
           title: "Error",
           text: "Something went wrong!",
@@ -62,11 +80,10 @@ const Details = () => {
         });
       });
   };
-
   if (!reviews) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-[#A91D3A]"></div>
+      <div className="min-h-screen flex items-center justify-center ">
+        <span className="loading loading-bars loading-md mx-auto"></span>;
       </div>
     );
   }
@@ -79,9 +96,7 @@ const Details = () => {
 
   return (
     <div className=" bg-black shadow-2xl w-[100%] mx-auto  text-blue-300 pb-48">
-      <h1 className="text-daxl text-center font-bold pt-20 pb-10">
-        {title}
-      </h1>
+      <h1 className="text-daxl text-center font-bold pt-20 pb-10">{title}</h1>
       <div className="w-[80%] mx-auto shadow-2xl rounded-lg shadow-sky-700  pb-10">
         <div className="w-[1150px] h-[580px] object-cover mx-auto rounded-lg border">
           <img
@@ -96,7 +111,6 @@ const Details = () => {
             <h1 className="text-5xl text-center font-semibold pt-10 pb-5">
               {title}
             </h1>
-
 
             {user ? (
               <button
@@ -113,8 +127,6 @@ const Details = () => {
                 Add to WatchList
               </button>
             )}
-
-            
           </div>
           <p className="text-xl font-medium text-blue-100 mb-5">
             {description}
@@ -126,7 +138,7 @@ const Details = () => {
                 onChange={ratingChanged}
                 isHalf={true}
                 size={24}
-                value={rating}
+                value={Number(rating)}
                 activeColor="#001aff"
               />
             </div>

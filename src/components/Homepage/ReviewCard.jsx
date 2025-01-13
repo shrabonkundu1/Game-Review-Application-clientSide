@@ -4,7 +4,7 @@ import ReactStars from "react-stars";
 
 const ReviewCard = ({review}) => {
 
-    console.log(review)
+
     const {_id,photo,title, rating, year} =review;
 
 
@@ -31,7 +31,7 @@ const ReviewCard = ({review}) => {
             onChange={ratingChanged}
             isHalf={true}
             size={24}
-            value={rating}
+            value={Number(rating)}
             activeColor="#001aff"
           />
           <span className="text-gray-500  ">({rating})</span>

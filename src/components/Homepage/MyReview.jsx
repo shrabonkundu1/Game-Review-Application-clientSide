@@ -8,12 +8,15 @@ import Swal from "sweetalert2";
 const MyReview = () => {
   const { user } = useContext(AuthContext);
   const [review, setReview] = useState([]);
+  const [loading,setLoading] = useState();
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/myReviews?email=${user.email}`)
+      setLoading(true)
+      fetch(`https://game-review-theta.vercel.app/myReviews?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           setReview(data);
+          setLoading(false);
         });
     }
   }, []);
@@ -36,7 +39,7 @@ const MyReview = () => {
 
 
   
-  fetch(`http://localhost:5000/reviews/${_id}`,{
+  fetch(`https://game-review-theta.vercel.app/reviews/${_id}`,{
     method: "PUT",
     headers: {
       "content-type":"application/json"
@@ -75,7 +78,7 @@ const MyReview = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log(result)
-        fetch(`http://localhost:5000/myReviews/${_id}`, {
+        fetch(`https://game-review-theta.vercel.app/myReviews/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -94,6 +97,14 @@ const MyReview = () => {
       }
     });
   };
+
+  if(loading){
+    return <div className="min-h-screen flex items-center justify-center ">
+    
+     <span className="loading loading-bars loading-md mx-auto"></span>;
+  
+  </div>
+  }
 
   return (
     <div className="mb-24 mt-16 text-center">
@@ -128,7 +139,7 @@ const MyReview = () => {
                   >
                     <td className="px-2 py-2 flex  mx-auto">
                       <div className="avatar grid justify-center">
-                        <div className="  h-20 w-20 ml-20">
+                        <div className="  h-20 w-20 ml-36">
                           <img
                             src={rev.photo}
                             alt={rev.title}

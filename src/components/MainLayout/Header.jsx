@@ -54,7 +54,7 @@ const Header = () => {
         <>
           
           <li>
-            <NavLink to="/gamewatchlist">
+            <NavLink to="/watchList">
               <CgProfile />
               Game Watchlist
             </NavLink>
