@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 const UpdateReview = () => {
 
     const review = useLoaderData()
-    (review)
+
 
     const {_id,title,photo,genre,year,rating,description} =review
 

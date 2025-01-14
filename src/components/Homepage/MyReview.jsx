@@ -157,17 +157,7 @@ const MyReview = () => {
                     <td className="py-2 px-4 text-[18px]">{rev.rating}</td>
                     <td className="py-2 px-4 text-[18px]">{rev.year}</td>
                     <td className="py-2 px-4 text-[18px]">{rev.genre}</td>
-                    {/* <td className="px-2 py-2 text-[18px]">
-                      {new Date(rev.createdAt).toLocaleString("en-US", {
-                        year: "numeric",
-                        month: "2-digit",
-                        day: "2-digit",
-                        hour: "2-digit",
-                        minute: "2-digit",
-                        second: "2-digit",
-                        hour12: true,
-                      })}
-                    </td> */}
+                   
                     <td className="px-2 py-2 md:space-x-2 space-y-2 ">
                       <Link to={`/updateReviews/${rev._id}`}>
                         <button
