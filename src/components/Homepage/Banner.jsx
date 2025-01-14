@@ -18,13 +18,13 @@ const Banner = () => {
 
   return (
     <Slider {...settings}>
-      <div className="max-h-[550px]">
+      <div className="h-[243px] md:max-h-[550px]">
         <img className="h-full w-full object-cover" src={slider3} alt="" />
       </div>
-      <div className="max-h-[550px]">
+      <div className="h-[243px]  max-h-[550px]">
         <img className="h-full w-full object-cover" src={slider2} alt="" />
       </div>
-      <div className="max-h-[550px]">
+      <div className="h-[243px]  max-h-[550px]">
         <img  className="h-full w-full object-cover" src={slider1} alt="" />
       </div>
     </Slider>

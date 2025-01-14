@@ -87,7 +87,7 @@ const LogIn = () => {
   };
   
   return (
-    <div className="card bg-base-100 w-full mx-auto mt-10 md:mt-20 max-w-sm shrink-0 shadow-2xl shadow-blue-400 mb-24">
+    <div className="card bg-base-100 w-full mx-auto  mt-28 max-w-sm shrink-0 shadow-2xl shadow-blue-400 mb-24">
       <form onSubmit={handleLogin} className="card-body">
         <h1 className="text-5xl font-bold text-center mb-10">Login now!</h1>
         <div className="form-control">

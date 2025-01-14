@@ -15,7 +15,7 @@ import { Cursor, Typewriter } from "react-simple-typewriter";
 const MPGame = () => {
   return (
     <div className="bg-gradient-to-r from-[#060c3b] to-[#010314] mb-24 py-16 rounded-lg">
-      <h2 className="text-5xl font-semibold text-blue-300 text-center mb-24">
+      <h2 className="text-3xl lg:text-5xl font-semibold text-blue-300 text-center mb-24">
         <span className="text-blue-800"> Most</span>
         <span>
           <Typewriter
@@ -23,6 +23,7 @@ const MPGame = () => {
             loop={8}
             typeSpeed={100}
             deleteSpeed={80}
+            delaySpeed={2000}
           ></Typewriter>
         </span>
         <span className="text-blue-900">

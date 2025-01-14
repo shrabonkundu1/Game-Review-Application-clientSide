@@ -13,9 +13,8 @@ const ReviewCard = ({review}) => {
     };
     
   return (
-    <div className="">
-      <div className="card  rounded-lg bg-[#1d232a] shadow-xl w-max hover:scale-105 hover:shadow-sky-700">
-        <figure className="px-5 pt-5 w-[330px] h-[260px] object-cover">
+      <div className="card  rounded-lg bg-[#1d232a] shadow-xl md:w-max hover:scale-105 hover:shadow-sky-700">
+        <figure className="px-5 pt-5 md:w-[330px] md:h-[260px] object-cover">
           <img
             src={photo}
             alt=""
@@ -44,7 +43,6 @@ const ReviewCard = ({review}) => {
           </div> 
         </div>
       </div>
-    </div>
   );
 };
 

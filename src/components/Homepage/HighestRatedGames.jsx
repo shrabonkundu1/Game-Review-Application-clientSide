@@ -32,20 +32,21 @@ const HighestRatedGames = () => {
 
   return (
     <div className="mt-24">
-      <h1 className=" text-6xl font-semibold mb-16 text-center">
+      <h1 className="text-3xl lg:text-6xl font-semibold mb-16 text-center">
         <span className="text-black dark:text-white">
           <Typewriter
             words={["Highest Rated Games", "Top Rated Games"]}
             loop={8}
             typeSpeed={100}
             deleteSpeed={80}
+            delaySpeed={2000}
           ></Typewriter>
         </span>
         <span className="text-blue-900">
           <Cursor cursorStyle='_'></Cursor>
         </span>
       </h1>
-      <div className="grid grid-cols-4 gap-8 w-[90%] mx-auto mb-24">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 w-[90%] mx-auto mb-24">
         {reviews.map((review) => (
           <ReviewCard key={review._id} review={review}></ReviewCard>
         ))}
