@@ -81,8 +81,8 @@ const Header = () => {
     </div>
   );
   return (
-    <div>
-      <div className="md:navbar my-2 bg-base-100   flex justify-between items-center ">
+    <div >
+      <div className="md:navbar py-2 bg-base-100   flex justify-between items-center  dark:bg-[#1d232a] text-black dark:text-white">
         <div className="dropdown mr-10">
           <div tabIndex={0} role="button" className="btn btn-ghost  lg:hidden">
             <svg
@@ -148,7 +148,7 @@ const Header = () => {
 
               <button
                 onClick={handleSignOut}
-                className="btn btn-outline btn-ghost"
+                className="btn btn-outline dark:text-white btn-ghost"
               >
                 Log Out
               </button>
