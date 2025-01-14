@@ -59,9 +59,9 @@ const AllReview = () => {
     );
   }
   return (
-    <div className="mt-16 mb-24">
+    <div className="my-24">
       <div>
-      <h1 className="text-4xl text-blue-900 text-center font-bold mb-10">
+      <h1 className="text-3xl lg:text-5xl text-blue-900 text-center font-bold mb-10">
         All
         <span>
           <Typewriter
@@ -76,7 +76,7 @@ const AllReview = () => {
         </span>
       </h1>
       </div>
-      <div className="flex flex-col gap-4 md:flex md:flex-row justify-between mb-6 px-4 md:w-10/12 mx-auto">
+      <div className="flex  gap-16 md:gap-4 md:flex flex-row md:justify-between mb-6 px-4 md:w-10/12 mx-auto">
       <div className="flex flex-col justify-start lg:flex lg:flex-row lg:items-center ">
           <label className="mr-4 text-lg">Sort By:</label>
           <select
@@ -107,7 +107,7 @@ const AllReview = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-10 w-[90%] mx-auto ">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 w-[90%] mx-auto ">
         {filteredReviews().map((review, index) => (
           <ReviewCard key={index} review={review}></ReviewCard>
         ))}

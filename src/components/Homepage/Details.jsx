@@ -95,10 +95,10 @@ const Details = () => {
     reviews;
 
   return (
-    <div className=" bg-black shadow-2xl w-[100%] mx-auto  text-blue-300 pb-48">
-      <h1 className="text-daxl text-center font-bold pt-20 pb-10">{title}</h1>
-      <div className="w-[80%] mx-auto shadow-2xl rounded-lg shadow-sky-700  pb-10">
-        <div className="w-[1150px] h-[580px] object-cover mx-auto rounded-lg border">
+    <div className=" bg-black shadow-2xl w-[100%] mx-auto  text-blue-300 pb-28 md:pb-48">
+      <h1 className="text-3xl md:text-5xl pt-24 text-center font-bold  pb-10">{title}</h1>
+      <div className="md:w-[80%] w-[90%] mx-auto shadow-2xl rounded-lg shadow-sky-700  pb-10">
+        <div className="md:w-[1150px] md:h-[580px] object-cover mx-auto rounded-lg ">
           <img
             className="w-full h-full object-cover rounded-lg"
             src={photo}
@@ -107,8 +107,8 @@ const Details = () => {
         </div>
 
         <div className=" w-[95%]  mx-auto">
-          <div className="flex justify-between items-center mb-5">
-            <h1 className="text-5xl text-center font-semibold pt-10 pb-5">
+          <div className="flex justify-between gap-2 items-center mb-5">
+            <h1 className="text-xl md:text-4xl text-center font-semibold pt-4 md:pt-10 pb-5">
               {title}
             </h1>
 
@@ -128,10 +128,10 @@ const Details = () => {
               </button>
             )}
           </div>
-          <p className="text-xl font-medium text-blue-100 mb-5">
+          <p className="md:text-xl font-medium text-blue-100 mb-5">
             {description}
           </p>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="px-5 py-2 boder bg-gray-700 rounded-lg">
               <ReactStars
                 count={5}

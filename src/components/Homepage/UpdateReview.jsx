@@ -63,10 +63,10 @@ const UpdateReview = () => {
         Update Review
       </h1>
      
-      <div className="grid grid-cols-5 gap-5 w-[80%] mx-auto border p-10 rounded-xl bg-gradient-to-r from-[#060c3b] to-[#010314]">
+      <div className="grid grid-cols-1 md:grid-cols-5 md:gap-5 w-[90%] md:w-[80%] mx-auto border p-4 md:p-10 rounded-xl bg-gradient-to-r from-[#060c3b] to-[#010314]">
         <form
           onSubmit={handleUpdateReview}
-          className="grid grid-cols-2 gap-4 col-span-3 w-[85%]"
+          className="grid grid-cols-2 gap-4 col-span-3 md:w-[85%]"
         >
           <input
             type="text"
@@ -137,7 +137,7 @@ const UpdateReview = () => {
             className="col-span-2 bg-[#ca2848] text-black p-2 rounded hover:bg-yellow-600 cursor-pointer"
           />
         </form>
-        <div className="col-span-2 border"></div>
+        <div className="md:col-span-2 col-span-1"></div>
       </div>
     </div>
     );

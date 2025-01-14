@@ -69,8 +69,8 @@ const MyWatchList = () => {
   }
 
   return (
-    <div className="mb-24 mt-16 text-center">
-      <p className="text-4xl text-blue-900 font-bold mb-10">
+    <div className="my-24 text-center">
+      <p className="text-3xl md:text-5xl text-blue-900 font-bold mb-10">
         My
         <span>
           <Typewriter

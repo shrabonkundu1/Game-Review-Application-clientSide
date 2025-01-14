@@ -57,8 +57,8 @@ const AddReview = () => {
   };
   return (
     <div className="pt-20 pb-32 bg-gradient-to-r from-[#060c3b] to-[#010314]">
-      <div className="border w-[85%] mx-auto rounded-lg">
-        <h1 className="text-4xl text-blue-300 font-bold text-center underline mt-10">
+      <div className=" w-[85%] mx-auto rounded-lg">
+        <h1 className="text-3xl md:text-5xl text-blue-300 font-bold text-center underline mt-10">
           Add New
           <span>
             <Typewriter
@@ -73,10 +73,10 @@ const AddReview = () => {
           </span>
         </h1>
 
-        <div className="grid grid-cols-5 gap-5 w-[100%] mx-auto  p-24 rounded-xl bg-gradient-to-r from-[#060c3b] to-[#010314]">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-5 w-[100%] mx-auto py-10 md:p-24 rounded-xl bg-gradient-to-r from-[#060c3b] to-[#010314]">
           <form
             onSubmit={handleAddReview}
-            className="grid grid-cols-2 gap-4 col-span-3 w-[85%]"
+            className="grid grid-cols-2 gap-4 md:col-span-3 md:w-[85%]"
           >
             <input
               type="text"
@@ -154,7 +154,7 @@ const AddReview = () => {
               className="col-span-2 bg-gradient-to-r from-[#6376ff] to-[#061170]  text-slate-200 text-[18px] font-semibold p-2 rounded hover:bg-yellow-600 cursor-pointer"
             />
           </form>
-          <div className="col-span-2 ">
+          <div className="md:col-span-2 ">
             <Lottie animationData={lottie}></Lottie>
           </div>
         </div>

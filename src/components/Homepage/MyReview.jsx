@@ -99,9 +99,9 @@ const MyReview = () => {
   }
 
   return (
-    <div className="mb-24 mt-16 text-center">
-      <p className="text-4xl text-blue-900 font-bold mb-10">
-        Mya
+    <div className="my-24 text-center">
+      <p className="text-3xl md:text-5xl text-blue-900 font-bold mb-10">
+        My
         <span>
           <Typewriter
             words={[" Review"]}
@@ -143,7 +143,7 @@ const MyReview = () => {
                     className="border-b border-[#333] hover:bg-blue-200 "
                   >
                     <td className="px-2 py-2 flex  mx-auto">
-                      <div className="avatar grid justify-center">
+                      <div className="avatar right-[70px] md:right-[30px] md: grid justify-center">
                         <div className="  h-20 w-20 ml-36">
                           <img
                             src={rev.photo}
