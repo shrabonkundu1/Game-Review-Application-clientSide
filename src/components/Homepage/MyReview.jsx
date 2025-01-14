@@ -34,7 +34,7 @@ const MyReview = () => {
     const description = form.description.value;
 
     const updateReview = { title, photo, rating, genre, year, description };
-    console.log(updateReview);
+    (updateReview);
 
     fetch(`https://game-review-theta.vercel.app/reviews/${_id}`, {
       method: "PUT",
@@ -45,7 +45,7 @@ const MyReview = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        (data);
         if (data.modifiedCount > 0) {
           Swal.fire({
             title: "success!",
@@ -58,7 +58,7 @@ const MyReview = () => {
   };
 
   const handleDelete = (_id) => {
-    console.log(_id);
+    (_id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -69,13 +69,13 @@ const MyReview = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(result);
+        (result);
         fetch(`https://game-review-theta.vercel.app/myReviews/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            (data);
             if (data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",

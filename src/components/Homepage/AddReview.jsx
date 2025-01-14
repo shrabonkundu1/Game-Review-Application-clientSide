@@ -32,7 +32,7 @@ const AddReview = () => {
       userName,
       email,
     };
-    console.log(newReview);
+    // (newReview);
 
     fetch("https://game-review-theta.vercel.app/reviews", {
       method: "POST",
@@ -43,7 +43,7 @@ const AddReview = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // (data);
         if (data.insertedId) {
           Swal.fire({
             title: "Success!",

@@ -9,7 +9,7 @@ import { Cursor, Typewriter } from "react-simple-typewriter";
 
 const TopGamers = () => {
   return (
-    <div className="mb-24 border rounded-lg p-16  mx-auto bg-gradient-to-r from-[#060c3b] to-[#010314]">
+    <div className="mb-24  rounded-lg p-16  mx-auto bg-gradient-to-r from-[#060c3b] to-[#010314] ">
       <h1 className="text-center font-semibold text-5xl text-blue-300">
         <span className="text-blue-800">Top</span>
         <span>

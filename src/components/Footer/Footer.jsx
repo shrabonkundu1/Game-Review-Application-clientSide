@@ -4,7 +4,7 @@ import { Cursor, Typewriter } from "react-simple-typewriter";
 
 const Footer = () => {
   return (
-    <div className="bg-gradient-to-r from-[#060c3b] to-[#010314] pt-16">
+    <div className="bg-gradient-to-r from-[#060c3b] to-[#010314]  pt-16">
       <h2 className="flex text-3xl items-center justify-center gap-5 font-semibold w-full mx-auto">
         <img className="h-16 w-16 rounded-xl" src={logo} alt="" />
         <p className="text-5xl text-red-100">

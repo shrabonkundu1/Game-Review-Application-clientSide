@@ -10,7 +10,7 @@ const Home = () => {
 
     const reviews = useLoaderData();
     return (
-        <div>
+        <div className='bg-white dark:bg-[#1d232a] text-black dark:text-white'>
             <Banner></Banner>
            
             {/* <div className='mt-24'>
@@ -25,6 +25,9 @@ const Home = () => {
             <HighestRatedGames></HighestRatedGames>
             <TopGamers></TopGamers>
             <MPGame></MPGame>
+            <div className='text-white dark:text-black'>
+                .
+            </div>
         </div>
     );
 };

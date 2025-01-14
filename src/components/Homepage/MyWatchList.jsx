@@ -28,7 +28,7 @@ const MyWatchList = () => {
     }
   }, [email]);
   const handleDelete = (_id) => {
-    console.log(_id);
+    (_id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -39,13 +39,13 @@ const MyWatchList = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(result);
+        (result);
         fetch(`https://game-review-theta.vercel.app/watchlist/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            (data);
             if (data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",

@@ -42,7 +42,7 @@ const Details = () => {
       email: user.email,
       username: user.displayName,
     };
-    console.log(watchList);
+    (watchList);
     setLoading(true);
 
     fetch(`https://game-review-theta.vercel.app/watchlist`, {
@@ -54,7 +54,7 @@ const Details = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        (data);
         if (data.insertedId) {
           Swal.fire({
             title: "Success",
@@ -71,7 +71,7 @@ const Details = () => {
         }
       })
       .catch((error) => {
-        console.log("error:", error);
+        ("error:", error);
         setLoading(false);
         Swal.fire({
           title: "Error",
@@ -89,7 +89,7 @@ const Details = () => {
   }
 
   const ratingChanged = (newRating) => {
-    console.log(newRating);
+    (newRating);
   };
   const { photo, title, description, rating, year, genre, userName, email } =
     reviews;

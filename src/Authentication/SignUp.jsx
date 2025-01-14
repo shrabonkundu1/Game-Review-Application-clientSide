@@ -30,7 +30,7 @@ const SignUp = () => {
        const email = form.get("email");
        const password = form.get("password");
        const terms = form.get("terms");
-        console.log(name, photo, email, password, terms)
+        // (name, photo, email, password, terms)
         setErrorMessage("");
         setSuccess(false);
 
@@ -100,8 +100,8 @@ const SignUp = () => {
 
   return (
     <div>
-      <div className="card bg-base-100 w-full max-w-sm mx-auto mt-20 shrink-0 shadow-2xl">
-        <form onSubmit={handleSignUp} className="card-body">
+      <div className="card bg-base-100 w-full max-w-lg mx-auto mt-20 shrink-0 shadow-2xl shadow-blue-400 mb-24">
+        <form onSubmit={handleSignUp} className="card-body max-w-sm mx-auto my-6">
           <h1 className="text-5xl font-bold mb-10">Sign Up now!</h1>
           <div className="form-control">
             <label className="label">
@@ -197,7 +197,7 @@ const SignUp = () => {
           </button>
         </div>
 
-        <p className="mb-5 mx-auto">
+        <p className="mb-10 mx-auto ">
           {" "}
           Already have an account Please{" "}
           <Link className="text-blue-700 ml-2" to="/login">

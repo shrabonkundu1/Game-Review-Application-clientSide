@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 const UpdateReview = () => {
 
     const review = useLoaderData()
-    console.log(review)
+    (review)
 
     const {_id,title,photo,genre,year,rating,description} =review
 
@@ -33,7 +33,7 @@ const UpdateReview = () => {
         //   userName,
         //   email,
         };
-        // console.log(newReview);
+        // (newReview);
     
         fetch(`https://game-review-theta.vercel.app/reviews/${_id}`, {
           method: "PUT",
@@ -44,7 +44,7 @@ const UpdateReview = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            (data);
             if (data.modifiedCount) {
               Swal.fire({
                 title: "Success!",

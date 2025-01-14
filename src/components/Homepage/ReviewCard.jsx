@@ -9,7 +9,7 @@ const ReviewCard = ({review}) => {
 
 
     const ratingChanged = (newRating) => {
-      console.log(newRating);
+      (newRating);
     };
     
   return (

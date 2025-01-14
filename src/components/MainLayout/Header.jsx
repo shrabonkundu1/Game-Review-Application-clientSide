@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import logo from "../../assets/logo.webp";
 import { NavLink } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
@@ -7,9 +7,19 @@ import { CgProfile } from "react-icons/cg";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-toastify";
 import { Cursor, Typewriter } from "react-simple-typewriter";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 const Header = () => {
   const { user, logOutUser } = useContext(AuthContext);
+  const [darkMode,setDarkMode] =useState(false)
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  },[darkMode])
 
   const handleSignOut = () => {
     logOutUser()
@@ -43,13 +53,17 @@ const Header = () => {
           Add Review
         </NavLink>
       </li>
-      <li>
-        <NavLink to="/myReviews">
-          <CgProfile />
-          My Review
-        </NavLink>
-      </li>
 
+      {user && (
+        <>
+          <li>
+            <NavLink to="/myReviews">
+              <CgProfile />
+              My Review
+            </NavLink>
+          </li>
+        </>
+      )}
       {user && (
         <>
           <li>
@@ -60,11 +74,15 @@ const Header = () => {
           </li>
         </>
       )}
+       <li>
+        <button  onClick={() => setDarkMode(!darkMode)}
+          className="px-4 py-2 rounded bg-blue-500 dark:bg-yellow-500 text-white"> {darkMode ? 'Light Mode' : 'Dark Mode'}</button>
+      </li>
     </div>
   );
   return (
     <div>
-      <div className="md:navbar my-2 bg-base-100   flex justify-between items-center">
+      <div className="md:navbar my-2 bg-base-100   flex justify-between items-center ">
         <div className="dropdown mr-10">
           <div tabIndex={0} role="button" className="btn btn-ghost  lg:hidden">
             <svg
@@ -92,7 +110,8 @@ const Header = () => {
         <div className="navbar-start mr-5">
           <a className="btn btn-ghost text-xl">
             <img className="w-10 h-10 rounded-lg mr-1" src={logo} alt="" />
-            <p className="font-semibold">Asthetic
+            <p className="font-semibold">
+              Asthetic
               <span>
                 <Typewriter
                   words={[" Gamer"]}
@@ -114,9 +133,17 @@ const Header = () => {
           {user ? (
             <div className="  flex items-center gap-5 md:mr-8">
               <img
+                data-tooltip-id="my-tooltip-1"
                 className="w-10 h-10 rounded-full object-cover"
                 src={user.photoURL}
                 alt="Profile picture"
+              />
+              <ReactTooltip
+                id="my-tooltip-1"
+                className="z-10 "
+                place="top"
+                variant="info"
+                content={user.displayName}
               />
 
               <button

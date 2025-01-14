@@ -33,7 +33,7 @@ const HighestRatedGames = () => {
   return (
     <div className="mt-24">
       <h1 className=" text-6xl font-semibold mb-16 text-center">
-        <span className="text-black">
+        <span className="text-black dark:text-white">
           <Typewriter
             words={["Highest Rated Games", "Top Rated Games"]}
             loop={8}
