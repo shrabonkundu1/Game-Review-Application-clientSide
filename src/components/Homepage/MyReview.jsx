@@ -5,6 +5,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { FaRegEdit } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Cursor, Typewriter } from "react-simple-typewriter";
+import { Helmet } from "react-helmet";
 
 const MyReview = () => {
   const { user } = useContext(AuthContext);
@@ -34,7 +35,7 @@ const MyReview = () => {
     const description = form.description.value;
 
     const updateReview = { title, photo, rating, genre, year, description };
-    (updateReview);
+    updateReview;
 
     fetch(`https://game-review-theta.vercel.app/reviews/${_id}`, {
       method: "PUT",
@@ -45,7 +46,7 @@ const MyReview = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        (data);
+        data;
         if (data.modifiedCount > 0) {
           Swal.fire({
             title: "success!",
@@ -58,7 +59,7 @@ const MyReview = () => {
   };
 
   const handleDelete = (_id) => {
-    (_id);
+    _id;
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -69,13 +70,13 @@ const MyReview = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        (result);
+        result;
         fetch(`https://game-review-theta.vercel.app/myReviews/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
-            (data);
+            data;
             if (data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",
@@ -93,6 +94,9 @@ const MyReview = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center ">
+        <Helmet>
+          <title>Asthetic Gamer || My Review</title>
+        </Helmet>
         <span className="loading loading-bars loading-md mx-auto"></span>;
       </div>
     );
@@ -157,7 +161,7 @@ const MyReview = () => {
                     <td className="py-2 px-4 text-[18px]">{rev.rating}</td>
                     <td className="py-2 px-4 text-[18px]">{rev.year}</td>
                     <td className="py-2 px-4 text-[18px]">{rev.genre}</td>
-                   
+
                     <td className="px-2 py-2 md:space-x-2 space-y-2 ">
                       <Link to={`/updateReviews/${rev._id}`}>
                         <button

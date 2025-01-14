@@ -2,14 +2,15 @@ import React, { useEffect, useState } from "react";
 import ReviewCard from "./ReviewCard";
 import { useLoaderData } from "react-router-dom";
 import { Cursor, Typewriter } from "react-simple-typewriter";
+import { Helmet } from "react-helmet";
 
 const AllReview = () => {
   // const reviews = useLoaderData();
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState();
-  const [sortedData,setSortedData] = useState('rating-asc')
-  const [filterGenre,setFilterGenre] = useState('')
-  const [genres,setGenres] = useState([]);
+  const [sortedData, setSortedData] = useState("rating-asc");
+  const [filterGenre, setFilterGenre] = useState("");
+  const [genres, setGenres] = useState([]);
 
   useEffect(() => {
     setLoading(true);
@@ -17,40 +18,42 @@ const AllReview = () => {
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);
-        const Genres = [...new Set(data.map(review => review.genre).flat())];
+        const Genres = [...new Set(data.map((review) => review.genre).flat())];
         setGenres(Genres);
         setLoading(false);
       });
   }, []);
 
-  const handelSorted = (event) =>{
-    setSortedData(event.target.value)
-  }
-  const handelGenre = (event) =>{
-    setFilterGenre(event.target.value)
-  }
+  const handelSorted = (event) => {
+    setSortedData(event.target.value);
+  };
+  const handelGenre = (event) => {
+    setFilterGenre(event.target.value);
+  };
 
-  const sortedReviews = () =>{
+  const sortedReviews = () => {
     let sorted = [...reviews];
-    if(sortedData === 'rating-asc'){
+    if (sortedData === "rating-asc") {
       sorted = sorted.sort((a, b) => a.rating - b.rating);
-    }else if(sortedData === 'rating-desc'){
+    } else if (sortedData === "rating-desc") {
       sorted = sorted.sort((a, b) => b.rating - a.rating);
-    }else if(sortedData === 'year-asc'){
+    } else if (sortedData === "year-asc") {
       sorted = sorted.sort((a, b) => a.year - b.year);
-    }else if (sortedData === 'year-desc'){
+    } else if (sortedData === "year-desc") {
       sorted = sorted.sort((a, b) => b.year - a.year);
     }
     return sorted;
-  }
-  
+  };
+
   const filteredReviews = () => {
     return sortedReviews().filter((review) => {
-      const matchesGenre = filterGenre ? review.genre.includes(filterGenre) : true;
+      const matchesGenre = filterGenre
+        ? review.genre.includes(filterGenre)
+        : true;
       return matchesGenre;
     });
   };
-  
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center ">
@@ -60,24 +63,27 @@ const AllReview = () => {
   }
   return (
     <div className="my-24">
+      <Helmet>
+        <title>Asthetic Gamer || All Reviews</title>
+      </Helmet>
       <div>
-      <h1 className="text-3xl lg:text-5xl text-blue-900 text-center font-bold mb-10">
-        All
-        <span>
-          <Typewriter
-            words={[" Review"]}
-            loop={8}
-            typeSpeed={100}
-            deleteSpeed={80}
-          ></Typewriter>
-        </span>
-        <span className="text-blue-900">
-          <Cursor cursorStyle="_"></Cursor>
-        </span>
-      </h1>
+        <h1 className="text-3xl lg:text-5xl text-blue-900 text-center font-bold mb-10">
+          All
+          <span>
+            <Typewriter
+              words={[" Review"]}
+              loop={8}
+              typeSpeed={100}
+              deleteSpeed={80}
+            ></Typewriter>
+          </span>
+          <span className="text-blue-900">
+            <Cursor cursorStyle="_"></Cursor>
+          </span>
+        </h1>
       </div>
       <div className="flex  gap-16 md:gap-4 md:flex flex-row md:justify-between mb-6 px-4 md:w-10/12 mx-auto">
-      <div className="flex flex-col justify-start lg:flex lg:flex-row lg:items-center ">
+        <div className="flex flex-col justify-start lg:flex lg:flex-row lg:items-center ">
           <label className="mr-4 text-lg">Sort By:</label>
           <select
             value={sortedData}
@@ -95,7 +101,7 @@ const AllReview = () => {
           <select
             value={filterGenre}
             onChange={handelGenre}
-            className= 'border border-[#242e93] rounded-md p-2'
+            className="border border-[#242e93] rounded-md p-2"
           >
             <option value="">All Genres</option>
             {genres.map((genre, index) => (

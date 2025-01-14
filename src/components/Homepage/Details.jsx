@@ -4,6 +4,7 @@ import { Link, useLoaderData, useParams } from "react-router-dom";
 import ReactStars from "react-stars";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const Details = () => {
   // const reviews = useLoaderData() || {};
@@ -96,6 +97,9 @@ const Details = () => {
 
   return (
     <div className=" bg-black shadow-2xl w-[100%] mx-auto  text-blue-300 pb-28 md:pb-48">
+      <Helmet>
+        <title>Asthetic Gamer || Details</title>
+      </Helmet>
       <h1 className="text-3xl md:text-5xl pt-24 text-center font-bold  pb-10">{title}</h1>
       <div className="md:w-[80%] w-[90%] mx-auto shadow-2xl rounded-lg shadow-sky-700  pb-10">
         <div className="md:w-[1150px] md:h-[580px] object-cover mx-auto rounded-lg ">

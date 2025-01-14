@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -59,6 +60,7 @@ const UpdateReview = () => {
     
     return (
         <div className="mt-20 mb-32">
+          <Helmet><title>Asthetic Gamer || Update Reviews</title></Helmet>
       <h1 className="text-2xl font-bold text-black text-center mb-4 ">
         Update Review
       </h1>

@@ -5,10 +5,9 @@ import { Cursor, Typewriter } from "react-simple-typewriter";
 const Footer = () => {
   return (
     <div className="bg-gradient-to-r from-[#060c3b] to-[#010314]  pt-16">
-      <h2 className="flex text-3xl items-center ml-2 md:ml-0 md:justify-center  gap-5 font-semibold w-full mx-auto">
+      <h2 className="flex text-3xl items-center ml-2 md:ml-0 md:justify-center  gap-5 font-semibold  mx-auto">
         <img className="h-16 w-16 rounded-xl" src={logo} alt="" />
         <p className="text-4xl  md:text-5xl text-red-100">
-          
           <span className="text-blue-300 ">
             <Typewriter
               words={[" Asthetic Gamer"]}
@@ -20,7 +19,6 @@ const Footer = () => {
           <span className="text-blue-900">
             <Cursor cursorStyle="_"></Cursor>
           </span>
-          
         </p>
       </h2>
       <p className="md:text-center text-slate-300  w-[95%] md:w-3/5 mx-auto my-5 ">

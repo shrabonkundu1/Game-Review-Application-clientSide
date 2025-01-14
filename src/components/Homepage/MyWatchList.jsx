@@ -3,6 +3,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { AiOutlineDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
 import { Cursor, Typewriter } from "react-simple-typewriter";
+import { Helmet } from "react-helmet";
 
 const MyWatchList = () => {
   const { user } = useContext(AuthContext);
@@ -28,7 +29,7 @@ const MyWatchList = () => {
     }
   }, [email]);
   const handleDelete = (_id) => {
-    (_id);
+    _id;
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -39,13 +40,13 @@ const MyWatchList = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        (result);
+        result;
         fetch(`https://game-review-theta.vercel.app/watchlist/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
-            (data);
+            data;
             if (data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",
@@ -70,6 +71,9 @@ const MyWatchList = () => {
 
   return (
     <div className="my-24 text-center">
+      <Helmet>
+        <title>Asthetic Gamer || My Watchlist</title>
+      </Helmet>
       <p className="text-3xl md:text-5xl text-blue-900 font-bold mb-10">
         My
         <span>

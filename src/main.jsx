@@ -18,6 +18,9 @@ import PrivateRoute from "./roiutes/PrivateRoute.jsx";
 import Details from "./components/Homepage/Details.jsx";
 import UpdateReview from "./components/Homepage/UpdateReview.jsx";
 import ErrorPage from "./components/Error/ErrorPage.jsx";
+import {  HelmetProvider } from 'react-helmet-async';
+// import { HelmetProvider } from "react-helmet";
+
 
 const router = createBrowserRouter([
   {
@@ -74,9 +77,11 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+    <HelmetProvider>
     <AuthProvider>
     <RouterProvider router={router} />
     <ToastContainer />
     </AuthProvider>
+    </HelmetProvider>
   </StrictMode>
 );

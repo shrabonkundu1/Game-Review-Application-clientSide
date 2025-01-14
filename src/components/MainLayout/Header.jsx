@@ -77,62 +77,54 @@ const Header = () => {
         </>
       )}
       {!user && (
-
         <li>
-        <NavLink to="/login" className=" grid md:hidden">
-        <CiLogin />
-                Login
-              </NavLink>
+          <NavLink to="/login" className=" grid md:hidden">
+            <CiLogin />
+            Login
+          </NavLink>
         </li>
-
       )}
       {!user && (
-        
         <li>
-        <NavLink to="/signup" className=" grid md:hidden">
-        <MdGroupAdd />
-                Sign Up
-              </NavLink>
+          <NavLink to="/signup" className=" grid md:hidden">
+            <MdGroupAdd />
+            Sign Up
+          </NavLink>
         </li>
-   
       )}
       {user && (
-        
         <button
-                onClick={handleSignOut}
-                className=" md:hidden flex gap-2 font-semibold items-center dark:text-white btn-ghost"
-              >
-                <CiLogout />
-                Log Out
-              </button>
+          onClick={handleSignOut}
+          className=" md:hidden flex gap-2 font-semibold items-center dark:text-white btn-ghost"
+        >
+          <CiLogout />
+          Log Out
+        </button>
       )}
     </div>
   );
   return (
     <div>
-      <div className="md:navbar border py-2 bg-base-100   flex md:justify-between items-center  dark:bg-[#1d232a] text-black dark:text-white backdrop-blur-md fixed z-50 top-0">
+      <div className="md:navbar   py-2 bg-base-100 w-full flex md:justify-between items-center  dark:bg-[#1d232a] text-black dark:text-white backdrop-blur-md fixed z-50 top-0">
         <div className="flex  navbar-start mr-5">
           <a className="btn  btn-ghost text-xl">
             <img className="w-10 h-10 rounded-lg mr-1" src={logo} alt="" />
             <p className="font-semibold flex gap-2">
               <span>Asthetic Gamer</span>
-              <span className="text-blue-900">
-              </span>
+              <span className="text-blue-900"></span>
               <button
-            onClick={() => setDarkMode(!darkMode)}
-            className=" grid md:hidden"
-          >
-            {darkMode ? <CiLight /> : <MdDarkMode />}
-          </button>
+                onClick={() => setDarkMode(!darkMode)}
+                className=" grid md:hidden"
+              >
+                {darkMode ? <CiLight /> : <MdDarkMode />}
+              </button>
             </p>
           </a>
         </div>
 
-       
-
         <div className="navbar-center  ">
           <div className="hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{links} </ul>
+            <ul className="menu menu-horizontal px-1">{links} </ul>
           </div>
           <button
             onClick={() => setDarkMode(!darkMode)}
@@ -140,10 +132,9 @@ const Header = () => {
           >
             {darkMode ? <CiLight /> : <MdDarkMode />}
           </button>
-          
         </div>
 
-        <div className="dropdown ml-[95px]">
+        <div className="dropdown ml-[130px] p-[1px] border rounded-lg relative">
           <div
             tabIndex={0}
             role="button"
@@ -165,7 +156,7 @@ const Header = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm  dropdown-content bg-base-100 rounded-box z-[1] dark:bg-gray-800 w-52 p-2 shadow right-[175px]  "
+            className="menu menu-sm  dropdown-content bg-base-100 mt-1 dark:bg-gray-800 w-52 p-2 shadow right-[205px]  absolute"
           >
             {links}
           </ul>

@@ -1,107 +1,97 @@
 import React, { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import { toast } from "react-toastify";
-import {  GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import auth from "../firebase/firebase.config";
+import { Helmet } from "react-helmet";
 
-
-const provider = new GoogleAuthProvider;
+const provider = new GoogleAuthProvider();
 const SignUp = () => {
+  const { createUser, setUser, updateP } = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
-    const  {createUser, setUser,updateP}  = useContext(AuthContext);
-    const [showPassword, setShowPassword] = useState(false);
-    const navigate = useNavigate(); 
+  const [errorMessage, setErrorMessage] = useState("");
+  const [success, setSuccess] = useState(false);
 
-    const [errorMessage,setErrorMessage]= useState("");
-    const [success, setSuccess]= useState(false)
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.target);
+    const name = form.get("name");
+    const photo = form.get("photo");
+    const email = form.get("email");
+    const password = form.get("password");
+    const terms = form.get("terms");
+    // (name, photo, email, password, terms)
+    setErrorMessage("");
+    setSuccess(false);
 
+    if (password.length < 6) {
+      setErrorMessage("Password should be 6 charecter or longer");
+      return;
+    }
 
+    if (!/[A-Z]/.test(password)) {
+      setErrorMessage("Password must contain one uppercase letter");
+      return;
+    }
+    if (!/[a-z]/.test(password)) {
+      setErrorMessage("Password must contain one lowercase letter");
+      return;
+    }
 
-   
+    if (!terms) {
+      setErrorMessage("Please accecpt all terms & condition");
+      return;
+    }
 
-    const handleSignUp  = e => {
-        e.preventDefault();
-        const form = new FormData(e.target);
-       const name = form.get("name");
-       const photo = form.get("photo");
-       const email = form.get("email");
-       const password = form.get("password");
-       const terms = form.get("terms");
-        // (name, photo, email, password, terms)
-        setErrorMessage("");
-        setSuccess(false);
-
-        
-        if (password.length < 6) {
-            setErrorMessage("Password should be 6 charecter or longer");
-            return;
-          }
-
-        if(!/[A-Z]/.test(password)) {
-          setErrorMessage("Password must contain one uppercase letter")
-          return;
-        }
-        if(!/[a-z]/.test(password)) {
-          setErrorMessage("Password must contain one lowercase letter")
-          return;
-        }
-
-
-        if(!terms) {
-            setErrorMessage("Please accecpt all terms & condition");
-            return;
-          }
-        
-        
-      createUser(email,password)
-      .then(result => {
+    createUser(email, password)
+      .then((result) => {
         const user = result.user;
-        toast.success("Sign Up successfully!",{
+        toast.success("Sign Up successfully!", {
           position: "top-center",
-          autoClose:2000
-      });
-      updateP({displayName:name , photo:photo})
-              setUser(user)
-              navigate("/")
-              setSuccess(true)
-              e.target.reset()
-            }).catch(error => {
-            
-              setErrorMessage(error.message)
-              setSuccess(false)
-            })
-      
-
-    };    
-    
-
-
-
-    const handleGoogleSignIn = () => {
-        signInWithPopup(auth,provider )
-        .then(result => {
-          toast.success("Sign Up successfully!",{
-            position: "top-center",
-            autoClose:2000
+          autoClose: 2000,
         });
-    
-        
-        navigate("/")
+        updateP({ displayName: name, photo: photo });
+        setUser(user);
+        navigate("/");
+        setSuccess(true);
+        e.target.reset();
       })
-      .catch(error => {
-   
-        setErrorMessage(error.message)
+      .catch((error) => {
+        setErrorMessage(error.message);
+        setSuccess(false);
       });
+  };
 
-    };
+  const handleGoogleSignIn = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        toast.success("Sign Up successfully!", {
+          position: "top-center",
+          autoClose: 2000,
+        });
+
+        navigate("/");
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
+  };
 
   return (
     <div>
+      <Helmet>
+        <title>Asthetic Gamer || Signin</title>
+      </Helmet>
       <div className="card bg-base-100 w-full max-w-lg mx-auto mt-20 shrink-0 shadow-2xl shadow-blue-400 mb-24">
-        <form onSubmit={handleSignUp} className="card-body max-w-sm mx-auto my-6">
+        <form
+          onSubmit={handleSignUp}
+          className="card-body max-w-sm mx-auto my-6"
+        >
           <h1 className="text-5xl font-bold mb-10">Sign Up now!</h1>
           <div className="form-control">
             <label className="label">
@@ -185,8 +175,6 @@ const SignUp = () => {
           </p>
         )}
 
-
-
         <div className="text-center my-4">
           <button
             onClick={handleGoogleSignIn}
@@ -210,8 +198,3 @@ const SignUp = () => {
 };
 
 export default SignUp;
-
-
-
-
-

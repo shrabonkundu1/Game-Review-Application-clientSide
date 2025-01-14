@@ -43,7 +43,7 @@ const HighestRatedGames = () => {
           ></Typewriter>
         </span>
         <span className="text-blue-900">
-          <Cursor cursorStyle='_'></Cursor>
+          <Cursor cursorStyle="_"></Cursor>
         </span>
       </h1>
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 w-[90%] mx-auto mb-24">

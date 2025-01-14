@@ -5,6 +5,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import lottie from "../../lottie/Animation - 1736774862850.json";
 import Lottie from "lottie-react";
 import { Cursor, Typewriter } from "react-simple-typewriter";
+import { Helmet } from "react-helmet";
 
 const AddReview = () => {
   const { user } = useContext(AuthContext);
@@ -57,6 +58,9 @@ const AddReview = () => {
   };
   return (
     <div className="pt-20 pb-32 bg-gradient-to-r from-[#060c3b] to-[#010314]">
+      <Helmet>
+        <title>Asthetic Gamer || Add Review</title>
+      </Helmet>
       <div className=" w-[85%] mx-auto rounded-lg">
         <h1 className="text-3xl md:text-5xl text-blue-300 font-bold text-center underline mt-10">
           Add New

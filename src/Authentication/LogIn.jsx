@@ -6,7 +6,12 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import { toast } from "react-toastify";
-import { GoogleAuthProvider, sendPasswordResetEmail, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  sendPasswordResetEmail,
+  signInWithPopup,
+} from "firebase/auth";
+import { Helmet } from "react-helmet";
 
 const LogIn = () => {
   const { signInUser } = useContext(AuthContext);
@@ -16,78 +21,74 @@ const LogIn = () => {
   const emailRef = useRef();
   const [showPassword, setShowPassword] = useState(false);
 
-
-  const handleLogin = e =>{
+  const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
 
     setSuccess(false);
     // setLoginError("we");
-    
 
-    signInUser(email,password)
-      .then(result => {
-   
-        setSuccess(true)
-        toast.success("Login Successfully!",{
+    signInUser(email, password)
+      .then((result) => {
+        setSuccess(true);
+        toast.success("Login Successfully!", {
           position: "top-center",
-          autoClose:2000
-      });
-        e.target.reset()
-        navigate("/")
+          autoClose: 2000,
+        });
+        e.target.reset();
+        navigate("/");
       })
-      .catch(error => {
-       
+      .catch((error) => {
         // setLoginError(error.message)
-        toast.error("Email and password should not match",{
+        toast.error("Email and password should not match", {
           position: "top-center",
-          autoClose:2000
-        })
-      })
+          autoClose: 2000,
+        });
+      });
   };
 
   const handleForgetPassword = () => {
-    const email  = emailRef.current.value;
+    const email = emailRef.current.value;
 
-    if(!email){
-        setLoginError('Please enter a valid email address')
-        return;
+    if (!email) {
+      setLoginError("Please enter a valid email address");
+      return;
     }
-    sendPasswordResetEmail(auth,email)
-    .then(()=> {
-      setLoginError("")
-      toast.success("Password reset email sent, Please cheak your email!",{
-        position: "top-center",
-        autoClose:2000
-    });
-    })
-    .catch(error => {
-      setLoginError(error.message)
-    })
-  
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        setLoginError("");
+        toast.success("Password reset email sent, Please cheak your email!", {
+          position: "top-center",
+          autoClose: 2000,
+        });
+      })
+      .catch((error) => {
+        setLoginError(error.message);
+      });
   };
-
 
   const handleGoogleSignIn = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
-    .then(result => {
-      toast.success("Login successfully!",{
-        position: "top-center",
-        autoClose:2000
-    });
-     
-      navigate("/")
-    })
-    .catch(error => {
-      
-      setLoginError(error.message)
-    })
+      .then((result) => {
+        toast.success("Login successfully!", {
+          position: "top-center",
+          autoClose: 2000,
+        });
+
+        navigate("/");
+      })
+      .catch((error) => {
+        setLoginError(error.message);
+      });
   };
-  
+
   return (
     <div className="card bg-base-100 w-full mx-auto  mt-28 max-w-sm shrink-0 shadow-2xl shadow-blue-400 mb-24">
+      <Helmet>
+        <title>Asthetic Gamer || Login</title>
+      </Helmet>
       <form onSubmit={handleLogin} className="card-body">
         <h1 className="text-5xl font-bold text-center mb-10">Login now!</h1>
         <div className="form-control">
@@ -130,14 +131,17 @@ const LogIn = () => {
         </div>
       </form>
       {success && (
-          <p className="text-green-500 text-xl text-center">
-            User Login Successfully!{" "}
-          </p>
-        )}
-        {loginError && <p className="text-xl text-red-500">{loginError}</p>}
+        <p className="text-green-500 text-xl text-center">
+          User Login Successfully!{" "}
+        </p>
+      )}
+      {loginError && <p className="text-xl text-red-500">{loginError}</p>}
 
       <div className="text-center my-4">
-        <button onClick={handleGoogleSignIn} className="btn btn-outline bg-yellow-300 text-gray-700">
+        <button
+          onClick={handleGoogleSignIn}
+          className="btn btn-outline bg-yellow-300 text-gray-700"
+        >
           <FcGoogle className="text-xl hover:text-white" />
           Login With Google
         </button>
