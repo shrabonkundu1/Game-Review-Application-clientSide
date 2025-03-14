@@ -29,7 +29,7 @@ const MyWatchList = () => {
     }
   }, [email]);
   const handleDelete = (_id) => {
-    _id;
+   
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -46,7 +46,7 @@ const MyWatchList = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            data;
+         
             if (data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",
